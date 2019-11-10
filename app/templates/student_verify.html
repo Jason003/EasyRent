@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Hello, {{user.username}}</h1>
+</div>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.university.label }}<br>
+        {{ form.university(size=32) }}<br>
+        {% for error in form.university.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.student_id.label }}<br>
+        {{ form.student_id(size=32) }}<br>
+        {% for error in form.student_id.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

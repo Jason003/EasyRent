@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Comment for <a href="/apartment/{{apt.apartment_id}}">{{apt.title}}</a></h1>
+</div>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.comment.label }}<br>
+        {{ form.comment(size=10000) }}<br>
+    </p>
+    <p>
+        {% for error in form.comment.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

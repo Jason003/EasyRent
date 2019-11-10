@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{session.user_name}}{% if session.is_student %} (Student) {% else %}
+        <button><a href="/student_verify/{{session.user_id}}" style="text-decoration: none;color: black">Student
+            Verification</a></button>
+        {% endif %}
+    </h1>
+</div>
+<div class="page-header">
+    <h3>My Inquiries</h3>
+</div>
+{% for i in inquiries %}
+<p><a href="/apartment/{{i.apartment_id}}">{{i.title}}</a> on {{i.time}}</p>
+{% endfor %}
+<div class="page-header">
+    <h3>My Signed Leases</h3></div>
+{% for l in leases %}
+<p><a href="/apartment/{{l.apartment_id}}">{{l.title}}</a> from {{l.start_date}} to {{l.end_date}}</p>
+{% endfor %}
+
+{% endblock %}

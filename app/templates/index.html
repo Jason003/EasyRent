@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Apartments
+        <small>Search Your Apartments</small>
+    </h1>
+</div>
+<p>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+
+    {{ form.key_word.label }}:
+    {{ form.key_word }} &nbsp;&nbsp;
+    {{ form.price.label }}: $
+    {{ form.price }}&nbsp;&nbsp;
+    {{ form.bedrooms.label }}:
+    {{ form.bedrooms }}&nbsp;&nbsp;
+    {{ form.bathrooms.label }}:
+    {{ form.bathrooms }}&nbsp;&nbsp;
+
+    {{ form.submit() }}
+
+</form>
+</p>
+<br>
+{% for apt in apartments %}
+<a href="/apartment/{{apt.apartment_id}}"><h3>{{apt.title}}</h3></a>
+<hr>
+{% endfor %}
+{% endblock %}
